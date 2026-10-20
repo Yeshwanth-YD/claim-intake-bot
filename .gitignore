@@ -1,0 +1,17 @@
+# UiPath
+.local/
+.objects/
+.settings/
+.tmp/
+.entities/
+.templates/
+*.nupkg
+.screenshots/
+
+# Run output
+reports/
+*.log
+
+# OS
+Thumbs.db
+.DS_Store

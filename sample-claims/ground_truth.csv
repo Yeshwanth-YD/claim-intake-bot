@@ -1,0 +1,9 @@
+FileName,ClaimNumber,ClaimantName,DateOfBirth,AccidentDate,AccidentLocation,VehicleRego,InjuryDescription,TreatmentProvider,InvoiceAmount,TestCase,ExpectedOutcome
+claim_01_CLM-2026-0101.pdf,CLM-2026-0101,Priya Raman,14/03/1988,02/09/2026,"Princes Hwy, Waurn Ponds",1AB2CD,Whiplash and lower back strain,Bayside Physio Clinic,420.00,Clean,Saved
+claim_02_CLM-2026-0102.pdf,CLM-2026-0102,Daniel Okafor,27/11/1975,08/09/2026,"Latrobe Tce, Geelong",XYZ789,Fractured left wrist,Corio Medical Centre,"1,250.50",Clean,Saved
+claim_03_CLM-2026-0103.pdf,CLM-2026-0103,Mei Lin Chen,05/06/1999,11/09/2026,"Settlement Rd, Belmont",2EF3GH,"Concussion, headaches",Barwon Neuro Rehab,860.00,Clean,Saved
+claim_04_CLM-2026-0104.pdf,CLM-2026-0104,Tom Bradshaw,19/01/1964,15/09/2026,"Bellarine Hwy, Leopold",PQR456,Shoulder sprain,Leopold Allied Health,315.75,Clean,Saved
+claim_05_CLM-2026-0105.pdf,CLM-2026-0105,Aisha Mahmoud,30/08/1992,18/09/2026,"Pakington St, Newtown",4JK5LM,Knee ligament injury,Surf Coast Sports Physio,"2,040.00",Clean,Saved
+claim_06_CLM-2026-0102.pdf,CLM-2026-0102,Grace Whitfield,12/12/1981,21/09/2026,"Moorabool St, Geelong",STU321,Neck pain,Corio Medical Centre,190.00,Duplicate claim number,Business exception: ERR-201 duplicate
+claim_07_CLM-2026-0107.pdf,CLM-2026-0107,Liam Nguyen,03/04/1990,,"Ryrie St, Geelong",6NP7QR,Bruised ribs,Geelong Family GP,275.00,Missing accident date,Business exception: missing field
+claim_08_CLM-2026-0108.pdf,CLM-2026-0108,Sofia Rossi,22/07/1985,25/09/2026,"Barwon Heads Rd, Marshall",VWX654,"Lower back pain, physiotherapy",Bayside Physio Clinic,640.00,"Scanned, skewed, noisy",Saved (low confidence -> human validation)

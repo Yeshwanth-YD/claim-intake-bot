@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CLAIMS ENTRY SYSTEM v2.3</title>
+<!--
+  Mock legacy claims system for an RPA demo. Fictional and synthetic: no real insurer, no real data.
+  Open this file in Chrome or Edge (double-click). Data is kept in the browser's localStorage.
+
+  Login:        user = demo   password = demo123
+  Test switches (on the login screen):
+    - "Simulate system outage"  -> every Save fails with SYSTEM ERROR 500 (a system exception for your bot)
+    - "Slow mode"               -> screens take 2-4 seconds to load (tests your waits/timeouts)
+  Business rules the app enforces (business exceptions for your bot):
+    - all fields marked * are required
+    - Claim Number must look like CLM-2026-0000
+    - a Claim Number that already exists is rejected as a duplicate
+-->
+<style>
+  body { background:#008080; font-family:"MS Sans Serif",Tahoma,Arial,sans-serif; font-size:12px; margin:0; padding:24px; }
+  .win { background:#c0c0c0; border:2px outset #fff; width:640px; margin:0 auto 16px; }
+  .title { background:#000080; color:#fff; font-weight:bold; padding:3px 6px; }
+  .body { padding:12px; }
+  table.form td { padding:3px 6px; vertical-align:top; }
+  input[type=text], input[type=password], textarea { font-family:inherit; font-size:12px; border:2px inset #fff; width:260px; }
+  textarea { height:40px; }
+  button { font-family:inherit; font-size:12px; border:2px outset #fff; background:#c0c0c0; padding:2px 14px; margin-right:6px; }
+  .status { border:2px inset #fff; background:#fff; padding:4px; margin-top:10px; min-height:16px; }
+  .err { color:#a00000; font-weight:bold; }
+  .ok { color:#006000; font-weight:bold; }
+  table.grid { border-collapse:collapse; width:100%; background:#fff; }
+  table.grid th, table.grid td { border:1px solid #808080; padding:2px 4px; font-size:11px; }
+  table.grid th { background:#d4d0c8; }
+  .hidden { display:none; }
+  #loading { text-align:center; padding:30px; font-weight:bold; }
+</style>
+</head>
+<body>
+
+<div id="loading" class="win hidden"><div class="title">Please wait</div><div class="body">LOADING... PLEASE WAIT</div></div>
+
+<!-- LOGIN SCREEN -->
+<div id="scrLogin" class="win">
+  <div class="title">CLAIMS ENTRY SYSTEM - Sign On</div>
+  <div class="body">
+    <table class="form">
+      <tr><td>User ID:</td><td><input type="text" id="txtUser" name="txtUser"></td></tr>
+      <tr><td>Password:</td><td><input type="password" id="txtPwd" name="txtPwd"></td></tr>
+      <tr><td></td><td>
+        <label><input type="checkbox" id="chkOutage"> Simulate system outage</label><br>
+        <label><input type="checkbox" id="chkSlow"> Slow mode</label>
+      </td></tr>
+    </table>
+    <button id="btnSignOn" onclick="signOn()">Sign On</button>
+    <div class="status" id="loginStatus"></div>
+  </div>
+</div>
+
+<!-- CLAIM ENTRY SCREEN -->
+<div id="scrEntry" class="win hidden">
+  <div class="title">CLAIMS ENTRY SYSTEM - New Claim (CLM100)</div>
+  <div class="body">
+    <table class="form">
+      <tr><td>Claim Number *</td><td><input type="text" id="f1" name="f1"></td></tr>
+      <tr><td>Claimant Name *</td><td><input type="text" id="f2" name="f2"></td></tr>
+      <tr><td>Date of Birth *</td><td><input type="text" id="f3" name="f3" placeholder="DD/MM/YYYY"></td></tr>
+      <tr><td>Accident Date *</td><td><input type="text" id="f4" name="f4" placeholder="DD/MM/YYYY"></td></tr>
+      <tr><td>Accident Location *</td><td><input type="text" id="f5" name="f5"></td></tr>
+      <tr><td>Vehicle Registration *</td><td><input type="text" id="f6" name="f6"></td></tr>
+      <tr><td>Injury Description *</td><td><textarea id="f7" name="f7"></textarea></td></tr>
+      <tr><td>Treatment Provider *</td><td><input type="text" id="f8" name="f8"></td></tr>
+      <tr><td>Invoice Amount ($) *</td><td><input type="text" id="f9" name="f9"></td></tr>
+    </table>
+    <button id="btnSave" onclick="saveClaim()">Save</button>
+    <button id="btnClear" onclick="clearForm()">Clear</button>
+    <button id="btnList" onclick="show('scrList')">Claim List</button>
+    <button id="btnSignOff" onclick="signOff()">Sign Off</button>
+    <div class="status" id="entryStatus"></div>
+  </div>
+</div>
+
+<!-- CLAIM LIST SCREEN -->
+<div id="scrList" class="win hidden">
+  <div class="title">CLAIMS ENTRY SYSTEM - Claim List (CLM200)</div>
+  <div class="body">
+    <table class="grid" id="tblClaims">
+      <thead><tr><th>Claim No</th><th>Claimant</th><th>Accident Date</th><th>Provider</th><th>Amount</th><th>Entered</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <br>
+    <button id="btnBack" onclick="show('scrEntry')">Back</button>
+    <button id="btnExport" onclick="exportCsv()">Export CSV</button>
+    <button id="btnReset" onclick="resetData()">Delete All (reset demo)</button>
+  </div>
+</div>
+
+<script>
+var KEY = 'mockClaims';
+var fieldNames = ['ClaimNumber','ClaimantName','DateOfBirth','AccidentDate','AccidentLocation','VehicleRego','InjuryDescription','TreatmentProvider','InvoiceAmount'];
+
+function load() { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; } }
+function store(rows) { try { localStorage.setItem(KEY, JSON.stringify(rows)); } catch (e) {} }
+function slow() { return document.getElementById('chkSlow').checked; }
+function outage() { return document.getElementById('chkOutage').checked; }
+
+function show(id) {
+  var screens = ['scrLogin','scrEntry','scrList'];
+  screens.forEach(function (s) { document.getElementById(s).classList.add('hidden'); });
+  var go = function () {
+    document.getElementById('loading').classList.add('hidden');
+    document.getElementById(id).classList.remove('hidden');
+    if (id === 'scrList') renderList();
+  };
+  if (slow()) {
+    document.getElementById('loading').classList.remove('hidden');
+    setTimeout(go, 2000 + Math.random() * 2000);
+  } else { go(); }
+}
+
+function signOn() {
+  var u = document.getElementById('txtUser').value, p = document.getElementById('txtPwd').value;
+  var st = document.getElementById('loginStatus');
+  if (u === 'demo' && p === 'demo123') { st.innerHTML = ''; show('scrEntry'); }
+  else { st.innerHTML = '<span class="err">INVALID USER ID OR PASSWORD</span>'; }
+}
+function signOff() { document.getElementById('txtPwd').value = ''; show('scrLogin'); }
+
+function clearForm() {
+  for (var i = 1; i <= 9; i++) document.getElementById('f' + i).value = '';
+  document.getElementById('entryStatus').innerHTML = '';
+}
+
+function saveClaim() {
+  var st = document.getElementById('entryStatus');
+  var v = [];
+  for (var i = 1; i <= 9; i++) v.push(document.getElementById('f' + i).value.trim());
+  var finish = function () {
+    if (outage()) { st.innerHTML = '<span class="err">SYSTEM ERROR 500 - HOST NOT RESPONDING. TRY AGAIN LATER.</span>'; return; }
+    for (var j = 0; j < 9; j++) if (!v[j]) { st.innerHTML = '<span class="err">ERR-101 REQUIRED FIELD MISSING: ' + fieldNames[j] + '</span>'; return; }
+    if (!/^CLM-2026-\d{4}$/.test(v[0])) { st.innerHTML = '<span class="err">ERR-102 INVALID CLAIM NUMBER FORMAT</span>'; return; }
+    if (!/^\d{2}\/\d{2}\/\d{4}$/.test(v[2]) || !/^\d{2}\/\d{2}\/\d{4}$/.test(v[3])) { st.innerHTML = '<span class="err">ERR-103 INVALID DATE FORMAT (DD/MM/YYYY)</span>'; return; }
+    if (isNaN(parseFloat(v[8].replace(/[$,]/g, '')))) { st.innerHTML = '<span class="err">ERR-104 INVALID AMOUNT</span>'; return; }
+    var rows = load();
+    if (rows.some(function (r) { return r.ClaimNumber === v[0]; })) { st.innerHTML = '<span class="err">ERR-201 DUPLICATE CLAIM NUMBER ' + v[0] + '</span>'; return; }
+    var rec = {}; fieldNames.forEach(function (n, k) { rec[n] = v[k]; });
+    rec.EnteredAt = new Date().toISOString();
+    rows.push(rec); store(rows);
+    st.innerHTML = '<span class="ok">CLAIM ' + v[0] + ' SAVED</span>';
+  };
+  if (slow()) { st.innerHTML = 'PROCESSING...'; setTimeout(finish, 1500 + Math.random() * 1500); } else { finish(); }
+}
+
+function renderList() {
+  var tb = document.querySelector('#tblClaims tbody'); tb.innerHTML = '';
+  load().forEach(function (r) {
+    var tr = document.createElement('tr');
+    [r.ClaimNumber, r.ClaimantName, r.AccidentDate, r.TreatmentProvider, r.InvoiceAmount, r.EnteredAt.slice(0, 19).replace('T', ' ')]
+      .forEach(function (c) { var td = document.createElement('td'); td.textContent = c; tr.appendChild(td); });
+    tb.appendChild(tr);
+  });
+}
+
+function exportCsv() {
+  var rows = load(), cols = fieldNames.concat(['EnteredAt']);
+  var esc = function (s) { s = String(s == null ? '' : s); return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
+  var csv = [cols.join(',')].concat(rows.map(function (r) { return cols.map(function (c) { return esc(r[c]); }).join(','); })).join('\n');
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv' }));
+  a.download = 'claims_export.csv'; a.click();
+}
+
+function resetData() { if (confirm('Delete all claims?')) { store([]); renderList(); } }
+</script>
+</body>
+</html>
