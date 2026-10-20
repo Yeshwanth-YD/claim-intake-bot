@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Sign On",
+  "Type": "Element",
+  "TaxonomyType": "Button",
+  "Id": "eSqQqwhw-EeMdt2iy_UCmA",
+  "Reference": "DPrYiDWlO0-AVBi_eyU4mQ/eSqQqwhw-EeMdt2iy_UCmA",
+  "ParentRef": "DPrYiDWlO0-AVBi_eyU4mQ/cK4gFoAZfkOZ3ICwyCYFKw",
+  "Created": "2026-10-20T12:47:35.6760945Z",
+  "Updated": "2026-10-20T12:47:35.6760945Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.5.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.9.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

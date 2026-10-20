@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="QFrQb9-ru0-s9R7_Ar_jww" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="" DesignTimeRectangle="629, 384, 113, 33" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='btnSignOn' tag='BUTTON' /&gt;" Guid="7822fa3d-7ed8-4d4c-bf5c-9825a90a6d85" ScopeSelectorArgument="&lt;html app='chrome.exe' title='CLAIMS ENTRY SYSTEM v2.3' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive">
+      <imageRef attrName="InformativeScreenshot" originalValue="dd4504bad79d8741ed65aedc862258c5.jpg" xmlns="">0h786NIJAvEShUoHNx1rn7g</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">Click</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

@@ -1,12 +1,11 @@
-# UiPath
+# UiPath: local-only files (never commit)
 .local/
-.objects/
-.settings/
-.tmp/
-.entities/
-.templates/
+.tmh/
 *.nupkg
-.screenshots/
+Exceptions_Screenshots/*.png
+
+# Keep these UiPath folders in Git (Object Repository, settings, entities):
+# .objects/  .settings/  .entities/  .templates/  .project/
 
 # Run output
 reports/

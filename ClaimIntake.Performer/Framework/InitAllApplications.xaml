@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Initialize_Applications" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Initialize_Applications" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
@@ -34,6 +34,20 @@
       <x:String>System.Xml.Linq</x:String>
       <x:String>UiPath.Core</x:String>
       <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Platform.SyncObjects</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -62,15 +76,152 @@
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
       <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>NPOI.Core</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="376,232" sap2010:WorkflowViewState.IdRef="Sequence_9">
+  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="800.6666666666666,2271.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_9">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="strAppPath" />
+      <Variable x:TypeArguments="x:String" Name="strUsername" />
+      <Variable x:TypeArguments="ss:SecureString" Name="secPassword" />
+    </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log message (Initialize applications)" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Opening applications...&quot;]" />
+    <ui:LogMessage DisplayName="Log message (Initialize applications)" sap:VirtualizedContainerService.HintSize="688,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Opening applications...&quot;]" />
+    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[in_Config(&quot;LegacyApp_PathAsset&quot;).ToString]" CacheStrategy="None" DisplayName="Get Asset" FolderPath="[in_Config(&quot;OrchestratorFolder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="688,176.66666666666666" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1">
+      <ui:GetRobotAsset.Value>
+        <OutArgument x:TypeArguments="x:String">[strAppPath]</OutArgument>
+      </ui:GetRobotAsset.Value>
+    </ui:GetRobotAsset>
+    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_Config(&quot;LegacyApp_CredentialAsset&quot;).ToString]" CacheStrategy="None" DisplayName="Get Credential" FolderPath="[in_Config(&quot;OrchestratorFolder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="688,176.66666666666666" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[secPassword]" Username="[strUsername]" />
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="[UiPath.UIAutomationNext.Enums.NAppCloseMode.Never]" DisplayName="Chrome CLAIMS ENTRY SYSTEM v2.3" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="688,1688" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="[UiPath.UIAutomationNext.Enums.NAppOpenMode.IfNotOpen]" ScopeGuid="a23bf16c-63c0-4dd7-bd72-bcd99e2ab779" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="686,1493.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_10">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'User ID'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="652,248" sap2010:WorkflowViewState.IdRef="NTypeInto_1" InteractionMode="SameAsCard" ScopeIdentifier="a23bf16c-63c0-4dd7-bd72-bcd99e2ab779" Text="[strUsername]" Version="V5">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="" ContentHash="lFP1_-Yl7UqauDlCEtql4g" DesignTimeRectangle="746, 236, 402, 30" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl id='txtUser' type='text' tag='INPUT' class='' aaname='' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="ec2cc976-8cba-4964-b752-54f62ebe2cf2" InformativeScreenshot="cb15b60d9c16b052ba3c107bef28f4f6.jpg" IsResponsive="True" Reference="DPrYiDWlO0-AVBi_eyU4mQ/u8MscufqqkGUPhuP50nGDg" ScopeSelectorArgument="&lt;html app='chrome.exe' title='CLAIMS ENTRY SYSTEM v2.3' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                      <uix:Target DesignTimeRectangle="632, 231, 102, 39" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='' aaname='User ID:' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='User ID:' /&gt;" Guid="d9b3411f-94ef-49ef-ad79-7b1a4f68dd48" SearchSteps="FuzzySelector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+              <uix:NTypeInto.VerifyOptions>
+                <uix:VerifyExecutionTypeIntoOptions Mode="Appears">
+                  <uix:VerifyExecutionTypeIntoOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionTypeIntoOptions.Retry>
+                  <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                </uix:VerifyExecutionTypeIntoOptions>
+              </uix:NTypeInto.VerifyOptions>
+            </uix:NTypeInto>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Password'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="652,248" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InteractionMode="SameAsCard" ScopeIdentifier="a23bf16c-63c0-4dd7-bd72-bcd99e2ab779" SecureText="[secPassword]" Version="V5">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="" ContentHash="c8UnTfHSbEuhq433SREFPQ" DesignTimeRectangle="746, 278, 402, 30" ElementType="InputBoxPassword" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl id='txtPwd' type='password' tag='INPUT' class='' aaname='' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="baa60c99-e7c3-42dd-b42e-ff7326d1ddde" InformativeScreenshot="cae9b41bee80676cdd0ce4cdeba744fe.jpg" Reference="DPrYiDWlO0-AVBi_eyU4mQ/R1F3LfXBhUC4vTzgOYZ82A" ScopeSelectorArgument="&lt;html app='chrome.exe' title='CLAIMS ENTRY SYSTEM v2.3' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="632, 273, 102, 39" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='' aaname='Password:' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='Password:' /&gt;" Guid="2f73c732-92d7-4dfd-9fd5-e9f721cd1c46" SearchSteps="FuzzySelector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+              <uix:NTypeInto.VerifyOptions>
+                <uix:VerifyExecutionTypeIntoOptions Mode="Appears">
+                  <uix:VerifyExecutionTypeIntoOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionTypeIntoOptions.Retry>
+                  <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                </uix:VerifyExecutionTypeIntoOptions>
+              </uix:NTypeInto.VerifyOptions>
+            </uix:NTypeInto>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Sign On'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="652,195.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_1" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="a23bf16c-63c0-4dd7-bd72-bcd99e2ab779" Version="V5">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="" ContentHash="QFrQb9-ru0-s9R7_Ar_jww" DesignTimeRectangle="629, 384, 113, 33" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='btnSignOn' tag='BUTTON' /&gt;" Guid="7822fa3d-7ed8-4d4c-bf5c-9825a90a6d85" InformativeScreenshot="dd4504bad79d8741ed65aedc862258c5.jpg" Reference="DPrYiDWlO0-AVBi_eyU4mQ/eSqQqwhw-EeMdt2iy_UCmA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='CLAIMS ENTRY SYSTEM v2.3' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NCheckState DisplayName="Check App State 'Claim Number  Claimant…'" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="652,742" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="a23bf16c-63c0-4dd7-bd72-bcd99e2ab779" Version="V5">
+              <uix:NCheckState.IfExists>
+                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="650,227.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="616,167.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[&quot;Signed on to legacy claims app&quot;]" />
+                </Sequence>
+              </uix:NCheckState.IfExists>
+              <uix:NCheckState.IfNotExists>
+                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="650,174.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Throw Exception="[New System.Exception(&quot;Sign-on to legacy claims app failed&quot;)]" sap:VirtualizedContainerService.HintSize="616,114.66666666666667" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                </Sequence>
+              </uix:NCheckState.IfNotExists>
+              <uix:NCheckState.Target>
+                <uix:TargetAnchorable BrowserURL="" ContentHash="lk5iwyKGiEmgUazKc8Qq2Q" DesignTimeRectangle="611, 210, 960, 553" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl class='body' parentid='scrEntry' tag='DIV' /&gt;" Guid="b722ac42-9e4f-40ba-b36c-73b4e29d5db2" InformativeScreenshot="276e159cc125164eb8e90a59ba0bdcce.jpg" Reference="DPrYiDWlO0-AVBi_eyU4mQ/BBObOfTmkE2QSeUOSGhcMA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='CLAIMS ENTRY SYSTEM v2.3' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+              </uix:NCheckState.Target>
+            </uix:NCheckState>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.OCREngine>
+        <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))">
+          <ActivityFunc.Argument>
+            <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+          </ActivityFunc.Argument>
+        </ActivityFunc>
+      </uix:NApplicationCard.OCREngine>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-11, -11, 2182, 1300" BrowserType="Chrome" ContentHash="IsPEFldImUeYPluMFn-F4g" IconBase64="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" InformativeScreenshot="31d9a2a9c63be6be8bead3789e468a53.jpg" Reference="DPrYiDWlO0-AVBi_eyU4mQ/cK4gFoAZfkOZ3ICwyCYFKw" Selector="&lt;html app='chrome.exe' title='CLAIMS ENTRY SYSTEM v2.3' /&gt;" Url="[&quot;file:///&quot; + strAppPath.Replace(&quot;\&quot;, &quot;/&quot;)]" Version="V3" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
   </Sequence>
 </Activity>

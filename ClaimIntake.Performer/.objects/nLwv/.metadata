@@ -1,0 +1,12 @@
+﻿{
+  "Name": "Chrome CLAIMS ENTRY SYSTEM v2.3",
+  "Type": "App",
+  "Id": "nLwv7Y_UxUmuCb3O4SmvEg",
+  "Reference": "DPrYiDWlO0-AVBi_eyU4mQ/nLwv7Y_UxUmuCb3O4SmvEg",
+  "Created": "2026-10-20T12:43:21.2958211Z",
+  "Updated": "2026-10-20T12:43:21.2958211Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.5.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.9.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

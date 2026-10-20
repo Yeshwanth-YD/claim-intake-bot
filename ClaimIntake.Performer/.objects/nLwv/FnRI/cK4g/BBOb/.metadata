@@ -1,0 +1,13 @@
+﻿{
+  "Name": "Claim Number  Claimant…",
+  "Type": "Element",
+  "Id": "BBObOfTmkE2QSeUOSGhcMA",
+  "Reference": "DPrYiDWlO0-AVBi_eyU4mQ/BBObOfTmkE2QSeUOSGhcMA",
+  "ParentRef": "DPrYiDWlO0-AVBi_eyU4mQ/cK4gFoAZfkOZ3ICwyCYFKw",
+  "Created": "2026-10-20T12:49:05.2549877Z",
+  "Updated": "2026-10-20T12:49:05.2549877Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.5.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.9.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

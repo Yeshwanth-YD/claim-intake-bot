@@ -46,7 +46,7 @@ Note: claim 06 reuses claim 02's number. Depending on run order, the queue rejec
 
 ## Performer (REFramework) settings
 
-Config.xlsx, Settings sheet:
+Data\Config.json, Settings (see docs\DAY1.md for the current keys):
 
 | Name | Value |
 |---|---|

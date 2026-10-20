@@ -1,6 +1,9 @@
 {
   "Settings": {
-    "logF_BusinessProcessName": "Framework"
+    "logF_BusinessProcessName": "ClaimIntake",
+    "LegacyApp_PathAsset": "LegacyApp_Path",
+    "LegacyApp_CredentialAsset": "LegacyApp_Credential",
+    "OrchestratorFolder": "Shared"
   },
   "Constants": {
     "MaxRetryNumber": 0,
