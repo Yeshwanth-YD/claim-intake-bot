@@ -1,0 +1,13 @@
+﻿{
+  "Name": "Chrome CLAIMS ENTRY SYSTEM v2.3(1)",
+  "Type": "Screen",
+  "Id": "lsWtgPdq_0yskmr3M1GRUQ",
+  "Reference": "DPrYiDWlO0-AVBi_eyU4mQ/lsWtgPdq_0yskmr3M1GRUQ",
+  "ParentRef": "DPrYiDWlO0-AVBi_eyU4mQ/FnRIT5ThM0mInhP4qr8y7g",
+  "Created": "2026-10-21T20:07:59.2733463Z",
+  "Updated": "2026-10-21T20:07:59.2733463Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.5.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.9.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

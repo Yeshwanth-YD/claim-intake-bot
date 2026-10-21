@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Sign Off",
+  "Type": "Element",
+  "TaxonomyType": "Button",
+  "Id": "FCiSwsj_Y02aOLD2ndlqJg",
+  "Reference": "DPrYiDWlO0-AVBi_eyU4mQ/FCiSwsj_Y02aOLD2ndlqJg",
+  "ParentRef": "DPrYiDWlO0-AVBi_eyU4mQ/lsWtgPdq_0yskmr3M1GRUQ",
+  "Created": "2026-10-21T20:08:39.6802237Z",
+  "Updated": "2026-10-21T20:08:39.6802237Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.5.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.9.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}
