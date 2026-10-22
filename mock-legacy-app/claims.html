@@ -8,7 +8,7 @@
   Open this file in Chrome or Edge (double-click). Data is kept in the browser's localStorage.
 
   Login:        user = demo   password = demo123
-  Test switches (on the login screen):
+  Test switches (yellow TEST CONTROLS panel, top right, visible on every screen; they reset on page reload):
     - "Simulate system outage"  -> every Save fails with SYSTEM ERROR 500 (a system exception for your bot)
     - "Slow mode"               -> screens take 2-4 seconds to load (tests your waits/timeouts)
   Business rules the app enforces (business exceptions for your bot):
@@ -37,6 +37,14 @@
 </head>
 <body>
 
+<!-- TEST CONTROLS: visible on every screen so you can break the app mid-run. Not part of the "legacy" app. -->
+<div id="testPanel" style="position:fixed;top:8px;right:8px;background:#ffffe0;border:2px solid #a08000;padding:6px 10px;font-size:11px;z-index:99;">
+  <b>TEST CONTROLS</b><br>
+  <label><input type="checkbox" id="chkOutage"> Simulate system outage</label><br>
+  <label><input type="checkbox" id="chkSlow"> Slow mode</label><br>
+  <span style="color:#666">Resets when the page reloads</span>
+</div>
+
 <div id="loading" class="win hidden"><div class="title">Please wait</div><div class="body">LOADING... PLEASE WAIT</div></div>
 
 <!-- LOGIN SCREEN -->
@@ -46,10 +54,6 @@
     <table class="form">
       <tr><td>User ID:</td><td><input type="text" id="txtUser" name="txtUser"></td></tr>
       <tr><td>Password:</td><td><input type="password" id="txtPwd" name="txtPwd"></td></tr>
-      <tr><td></td><td>
-        <label><input type="checkbox" id="chkOutage"> Simulate system outage</label><br>
-        <label><input type="checkbox" id="chkSlow"> Slow mode</label>
-      </td></tr>
     </table>
     <button id="btnSignOn" onclick="signOn()">Sign On</button>
     <div class="status" id="loginStatus"></div>

@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Vehicle Registration ",
+  "Type": "Element",
+  "TaxonomyType": "Input",
+  "Id": "mfv9srIybkuBiyc0ptgq4g",
+  "Reference": "DPrYiDWlO0-AVBi_eyU4mQ/mfv9srIybkuBiyc0ptgq4g",
+  "ParentRef": "DPrYiDWlO0-AVBi_eyU4mQ/lsWtgPdq_0yskmr3M1GRUQ",
+  "Created": "2026-10-22T11:27:15.7611088Z",
+  "Updated": "2026-10-22T11:27:15.7611088Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.5.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.9.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

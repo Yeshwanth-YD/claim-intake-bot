@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="Transaction item to be processed." Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
@@ -37,10 +37,23 @@
       <x:String>UiPath.Core.Activities</x:String>
       <x:String>GlobalVariablesNamespace</x:String>
       <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Platform.SyncObjects</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>System.Reflection</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="40">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="80">
       <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -78,16 +91,315 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
       <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>NPOI.Core</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="375.2,389.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="800.6666666666666,4349.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
-    <ui:Comment DisplayName="Comment (placeholder)" sap:VirtualizedContainerService.HintSize="333.6,56" sap2010:WorkflowViewState.IdRef="Comment_1" Text="//  Invoke steps of the process" />
+    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="524,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
+    <ui:Comment DisplayName="Comment (placeholder)" sap:VirtualizedContainerService.HintSize="524,88.66666666666667" sap2010:WorkflowViewState.IdRef="Comment_1" Text="//  Invoke steps of the process" />
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="[UiPath.UIAutomationNext.Enums.NAppCloseMode.Never]" DisplayName="Chrome CLAIMS ENTRY SYSTEM v2.3(1)" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="524,3984" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="[UiPath.UIAutomationNext.Enums.NAppOpenMode.Never]" ScopeGuid="f6f2bed4-e7b8-4cf9-8f52-95c31369c4d7" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="522,3789.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="strStatus" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Clear'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="488,195.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_1" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="f6f2bed4-e7b8-4cf9-8f52-95c31369c4d7" Version="V5">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="" ContentHash="L80_qsIpiUawczFxR2fN5A" DesignTimeRectangle="732, 655, 91, 33" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='btnClear' tag='BUTTON' /&gt;" Guid="a1d1cf64-739c-4745-82cf-97648a590ee4" InformativeScreenshot="eb76d4b0a90483f2e871b2e3c300362a.jpg" Reference="DPrYiDWlO0-AVBi_eyU4mQ/rh00pQJCOk6LRLXx5SLHaQ" ScopeSelectorArgument="&lt;html app='chrome.exe' title='CLAIMS ENTRY SYSTEM v2.3' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Claim Number *'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="488,248" sap2010:WorkflowViewState.IdRef="NTypeInto_1" InteractionMode="SameAsCard" ScopeIdentifier="f6f2bed4-e7b8-4cf9-8f52-95c31369c4d7" Text="[in_TransactionItem.SpecificContent(&quot;ClaimNumber&quot;).ToString]" Version="V5">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="" DesignTimeRectangle="834, 236, 402, 30" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl parentid='scrEntry' tag='TABLE' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' /&gt;&lt;webctrl id='f1' type='text' tag='INPUT' class='' aaname='' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="5987bf7d-c64d-4b1f-9669-0ca3148a1d94" InformativeScreenshot="0a3813dd09b5517fa174012a6c2d04f7.jpg" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='CLAIMS ENTRY SYSTEM v2.3' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                      <uix:Target DesignTimeRectangle="632, 231, 190, 39" ElementType="Text" FuzzySelectorArgument="&lt;webctrl parentid='scrEntry' tag='TABLE' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' /&gt;&lt;webctrl type='' tag='TD' class='' aaname='Claim Number *' matching:class='fuzzy' fuzzylevel:class='0.0' fuzzylevel:aaname='0.0' check:innerText='Claim Number *' /&gt;" Guid="a0243554-a4a1-4208-97a6-5df0725b439a" SearchSteps="FuzzySelector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+              <uix:NTypeInto.VerifyOptions>
+                <uix:VerifyExecutionTypeIntoOptions Mode="Appears">
+                  <uix:VerifyExecutionTypeIntoOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionTypeIntoOptions.Retry>
+                  <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                </uix:VerifyExecutionTypeIntoOptions>
+              </uix:NTypeInto.VerifyOptions>
+            </uix:NTypeInto>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Claim Name'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="488,248" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InteractionMode="SameAsCard" ScopeIdentifier="f6f2bed4-e7b8-4cf9-8f52-95c31369c4d7" Text="[in_TransactionItem.SpecificContent(&quot;ClaimantName&quot;).ToString]" Version="V5">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="" ContentHash="mDziEibPhEWppLecVmI7jw" DesignTimeRectangle="834, 278, 402, 30" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl parentid='scrEntry' tag='TABLE' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' /&gt;&lt;webctrl id='f2' type='text' tag='INPUT' class='' aaname='' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="6a7b2ec0-9415-4ec1-b467-585a37e1d11b" InformativeScreenshot="423d1f528932eb5efb6158b67f0e0207.jpg" IsResponsive="True" Reference="DPrYiDWlO0-AVBi_eyU4mQ/_0K7HbRmxUGFVjeabTva7A" ScopeSelectorArgument="&lt;html app='chrome.exe' title='CLAIMS ENTRY SYSTEM v2.3' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="632, 273, 190, 39" ElementType="Text" FuzzySelectorArgument="&lt;webctrl parentid='scrEntry' tag='TABLE' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' /&gt;&lt;webctrl type='' tag='TD' class='' aaname='Claimant Name *' matching:class='fuzzy' fuzzylevel:class='0.0' fuzzylevel:aaname='0.0' check:innerText='Claimant Name *' /&gt;" Guid="3ec962f1-9cc5-4ee2-a546-8d88ebe664f0" SearchSteps="FuzzySelector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+              <uix:NTypeInto.VerifyOptions>
+                <uix:VerifyExecutionTypeIntoOptions Mode="Appears">
+                  <uix:VerifyExecutionTypeIntoOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionTypeIntoOptions.Retry>
+                  <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                </uix:VerifyExecutionTypeIntoOptions>
+              </uix:NTypeInto.VerifyOptions>
+            </uix:NTypeInto>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Date of Birth *'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="488,248" sap2010:WorkflowViewState.IdRef="NTypeInto_3" InteractionMode="SameAsCard" ScopeIdentifier="f6f2bed4-e7b8-4cf9-8f52-95c31369c4d7" Text="[in_TransactionItem.SpecificContent(&quot;DateOfBirth&quot;).ToString]" Version="V5">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="" ContentHash="1CKMDyrfLUepQP1SUkFLog" DesignTimeRectangle="834, 320, 402, 30" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl parentid='scrEntry' tag='TABLE' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' /&gt;&lt;webctrl id='f3' type='text' tag='INPUT' class='' placeholder='DD/MM/YYYY' aaname='' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="97b72061-0cbe-486b-8f80-60e144922b3d" InformativeScreenshot="9f8c2d49f6c3595dcd42d5064538e413.jpg" IsResponsive="True" Reference="DPrYiDWlO0-AVBi_eyU4mQ/nClk3uXNW0Wmdw6_Y2TWvQ" ScopeSelectorArgument="&lt;html app='chrome.exe' title='CLAIMS ENTRY SYSTEM v2.3' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                      <uix:Target DesignTimeRectangle="632, 315, 190, 39" ElementType="Text" FuzzySelectorArgument="&lt;webctrl parentid='scrEntry' tag='TABLE' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' /&gt;&lt;webctrl type='' tag='TD' class='' aaname='Date of Birth *' matching:class='fuzzy' fuzzylevel:class='0.0' fuzzylevel:aaname='0.0' check:innerText='Date of Birth *' /&gt;" Guid="1f26202e-20e4-4170-8511-f81a6474822e" SearchSteps="FuzzySelector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+              <uix:NTypeInto.VerifyOptions>
+                <uix:VerifyExecutionTypeIntoOptions Mode="Appears">
+                  <uix:VerifyExecutionTypeIntoOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionTypeIntoOptions.Retry>
+                  <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                </uix:VerifyExecutionTypeIntoOptions>
+              </uix:NTypeInto.VerifyOptions>
+            </uix:NTypeInto>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Accident Date *'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="488,248" sap2010:WorkflowViewState.IdRef="NTypeInto_4" InteractionMode="SameAsCard" ScopeIdentifier="f6f2bed4-e7b8-4cf9-8f52-95c31369c4d7" Text="[in_TransactionItem.SpecificContent(&quot;AccidentDate&quot;).ToString]" Version="V5">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="" ContentHash="St_XRmjwCEG4p2jwbPSJGA" DesignTimeRectangle="834, 362, 402, 30" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl parentid='scrEntry' tag='TABLE' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' /&gt;&lt;webctrl id='f4' type='text' tag='INPUT' class='' placeholder='DD/MM/YYYY' aaname='' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="62df5387-06fb-48de-b703-8d58e0c44485" InformativeScreenshot="37ade6257f89be60527a5be1ea26a2c1.jpg" IsResponsive="True" Reference="DPrYiDWlO0-AVBi_eyU4mQ/iENlLY22HUStdRPD-owskA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='CLAIMS ENTRY SYSTEM v2.3' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                      <uix:Target DesignTimeRectangle="632, 357, 190, 39" ElementType="Text" FuzzySelectorArgument="&lt;webctrl parentid='scrEntry' tag='TABLE' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' /&gt;&lt;webctrl type='' tag='TD' class='' aaname='Accident Date *' matching:class='fuzzy' fuzzylevel:class='0.0' fuzzylevel:aaname='0.0' check:innerText='Accident Date *' /&gt;" Guid="79b0ec96-d5a7-463f-a6cf-a36d7bf1ed7e" SearchSteps="FuzzySelector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+              <uix:NTypeInto.VerifyOptions>
+                <uix:VerifyExecutionTypeIntoOptions Mode="Appears">
+                  <uix:VerifyExecutionTypeIntoOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionTypeIntoOptions.Retry>
+                  <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                </uix:VerifyExecutionTypeIntoOptions>
+              </uix:NTypeInto.VerifyOptions>
+            </uix:NTypeInto>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Accident Location *'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="488,248" sap2010:WorkflowViewState.IdRef="NTypeInto_5" InteractionMode="SameAsCard" ScopeIdentifier="f6f2bed4-e7b8-4cf9-8f52-95c31369c4d7" Text="[in_TransactionItem.SpecificContent(&quot;AccidentLocation&quot;).ToString]" Version="V5">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="" ContentHash="kka-_ivkikC8r9Ikvb5AJQ" DesignTimeRectangle="834, 404, 402, 30" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl parentid='scrEntry' tag='TABLE' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' /&gt;&lt;webctrl id='f5' type='text' tag='INPUT' class='' aaname='' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="2cdbaf5c-0440-4b4f-8b1c-ba07a93c2a0d" InformativeScreenshot="8899d13a0a4ddaa51ba394a608c82dc7.jpg" IsResponsive="True" Reference="DPrYiDWlO0-AVBi_eyU4mQ/njC4AuDGrkq7zL84YmCF0g" ScopeSelectorArgument="&lt;html app='chrome.exe' title='CLAIMS ENTRY SYSTEM v2.3' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                      <uix:Target DesignTimeRectangle="632, 399, 190, 39" ElementType="Text" FuzzySelectorArgument="&lt;webctrl parentid='scrEntry' tag='TABLE' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' /&gt;&lt;webctrl type='' tag='TD' class='' aaname='Accident Location *' matching:class='fuzzy' fuzzylevel:class='0.0' fuzzylevel:aaname='0.0' check:innerText='Accident Location *' /&gt;" Guid="5a44bb74-6527-4c2b-8df0-ef927260cd6a" SearchSteps="FuzzySelector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+              <uix:NTypeInto.VerifyOptions>
+                <uix:VerifyExecutionTypeIntoOptions Mode="Appears">
+                  <uix:VerifyExecutionTypeIntoOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionTypeIntoOptions.Retry>
+                  <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                </uix:VerifyExecutionTypeIntoOptions>
+              </uix:NTypeInto.VerifyOptions>
+            </uix:NTypeInto>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Vehicle Registration *'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="488,248" sap2010:WorkflowViewState.IdRef="NTypeInto_6" InteractionMode="SameAsCard" ScopeIdentifier="f6f2bed4-e7b8-4cf9-8f52-95c31369c4d7" Text="[in_TransactionItem.SpecificContent(&quot;VehicleRego&quot;).ToString]" Version="V5">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="" ContentHash="p4M82X0q9k2VEEEztKDZSg" DesignTimeRectangle="834, 446, 402, 30" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl parentid='scrEntry' tag='TABLE' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' /&gt;&lt;webctrl id='f6' type='text' tag='INPUT' class='' aaname='' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="a6d7d33d-8647-46cc-8275-2263fcb799fa" InformativeScreenshot="390981ed98b7466a575820ad4aeb03a3.jpg" IsResponsive="True" Reference="DPrYiDWlO0-AVBi_eyU4mQ/mfv9srIybkuBiyc0ptgq4g" ScopeSelectorArgument="&lt;html app='chrome.exe' title='CLAIMS ENTRY SYSTEM v2.3' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                      <uix:Target DesignTimeRectangle="632, 441, 190, 39" ElementType="Text" FuzzySelectorArgument="&lt;webctrl parentid='scrEntry' tag='TABLE' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' /&gt;&lt;webctrl type='' tag='TD' class='' aaname='Vehicle Registration *' matching:class='fuzzy' fuzzylevel:class='0.0' fuzzylevel:aaname='0.0' check:innerText='Vehicle Registration *' /&gt;" Guid="a96905fe-93bb-44c6-9ef3-2f1893e2f02a" SearchSteps="FuzzySelector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+              <uix:NTypeInto.VerifyOptions>
+                <uix:VerifyExecutionTypeIntoOptions Mode="Appears">
+                  <uix:VerifyExecutionTypeIntoOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionTypeIntoOptions.Retry>
+                  <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                </uix:VerifyExecutionTypeIntoOptions>
+              </uix:NTypeInto.VerifyOptions>
+            </uix:NTypeInto>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Injury Description *'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="488,248" sap2010:WorkflowViewState.IdRef="NTypeInto_7" InteractionMode="SameAsCard" ScopeIdentifier="f6f2bed4-e7b8-4cf9-8f52-95c31369c4d7" Text="[in_TransactionItem.SpecificContent(&quot;InjuryDescription&quot;).ToString]" Version="V5">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="" ContentHash="tivlf3u5jUm_er7Lz9y6UQ" DesignTimeRectangle="834, 488, 402, 72" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl parentid='scrEntry' tag='TABLE' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' /&gt;&lt;webctrl id='f7' type='' tag='TEXTAREA' class='' aaname='' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="8b58c445-c321-4b0b-8b04-fe0f816bd8db" InformativeScreenshot="83f615471cb4e94da6d97f3114c8fc44.jpg" IsResponsive="True" Reference="DPrYiDWlO0-AVBi_eyU4mQ/KiC3krZ9WU-LqWt7FMMXXQ" ScopeSelectorArgument="&lt;html app='chrome.exe' title='CLAIMS ENTRY SYSTEM v2.3' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                      <uix:Target DesignTimeRectangle="632, 483, 190, 85" ElementType="Text" FuzzySelectorArgument="&lt;webctrl parentid='scrEntry' tag='TABLE' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' /&gt;&lt;webctrl type='' tag='TD' class='' aaname='Injury Description *' matching:class='fuzzy' fuzzylevel:class='0.0' fuzzylevel:aaname='0.0' check:innerText='Injury Description *' /&gt;" Guid="bdf88b03-bd1f-4d3a-945f-b2f4a8893891" SearchSteps="FuzzySelector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+              <uix:NTypeInto.VerifyOptions>
+                <uix:VerifyExecutionTypeIntoOptions Mode="Appears">
+                  <uix:VerifyExecutionTypeIntoOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionTypeIntoOptions.Retry>
+                  <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                </uix:VerifyExecutionTypeIntoOptions>
+              </uix:NTypeInto.VerifyOptions>
+            </uix:NTypeInto>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Treatment Provider *'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="488,248" sap2010:WorkflowViewState.IdRef="NTypeInto_8" InteractionMode="SameAsCard" ScopeIdentifier="f6f2bed4-e7b8-4cf9-8f52-95c31369c4d7" Text="[in_TransactionItem.SpecificContent(&quot;TreatmentProvider&quot;).ToString]" Version="V5">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="" ContentHash="DOatKbsYYUOQAE5lfogB8g" DesignTimeRectangle="834, 576, 402, 30" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl parentid='scrEntry' tag='TABLE' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' /&gt;&lt;webctrl id='f8' type='text' tag='INPUT' class='' aaname='' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="095952eb-82ae-4b06-afaa-5481e7788dda" InformativeScreenshot="60afd9a3187a5f58b79e00c7b7a9283e.jpg" IsResponsive="True" Reference="DPrYiDWlO0-AVBi_eyU4mQ/Nzp1Dl3L1Um0k8tcx6OYeg" ScopeSelectorArgument="&lt;html app='chrome.exe' title='CLAIMS ENTRY SYSTEM v2.3' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                      <uix:Target DesignTimeRectangle="632, 571, 190, 39" ElementType="Text" FuzzySelectorArgument="&lt;webctrl parentid='scrEntry' tag='TABLE' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' /&gt;&lt;webctrl type='' tag='TD' class='' aaname='Treatment Provider *' matching:class='fuzzy' fuzzylevel:class='0.0' fuzzylevel:aaname='0.0' check:innerText='Treatment Provider *' /&gt;" Guid="228a8188-c93e-41c7-8500-d80fcdd10fe9" SearchSteps="FuzzySelector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+              <uix:NTypeInto.VerifyOptions>
+                <uix:VerifyExecutionTypeIntoOptions Mode="Appears">
+                  <uix:VerifyExecutionTypeIntoOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionTypeIntoOptions.Retry>
+                  <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                </uix:VerifyExecutionTypeIntoOptions>
+              </uix:NTypeInto.VerifyOptions>
+            </uix:NTypeInto>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Invoice Amount ($) *'" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="488,248" sap2010:WorkflowViewState.IdRef="NTypeInto_9" InteractionMode="SameAsCard" ScopeIdentifier="f6f2bed4-e7b8-4cf9-8f52-95c31369c4d7" Text="[in_TransactionItem.SpecificContent(&quot;InvoiceAmount&quot;).ToString]" Version="V5">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="" ContentHash="U3JYLoHiQEO0mRFlSTDdfQ" DesignTimeRectangle="834, 618, 402, 30" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl parentid='scrEntry' tag='TABLE' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' /&gt;&lt;webctrl id='f9' type='text' tag='INPUT' class='' aaname='' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="79e48b7e-86be-4b47-97d1-8f22ecd15841" InformativeScreenshot="db87b5d71542fee20157efe449755c14.jpg" IsResponsive="True" Reference="DPrYiDWlO0-AVBi_eyU4mQ/TxWiEsnKnk-dh07xNc2vIQ" ScopeSelectorArgument="&lt;html app='chrome.exe' title='CLAIMS ENTRY SYSTEM v2.3' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                      <uix:Target DesignTimeRectangle="632, 613, 190, 39" ElementType="Text" FuzzySelectorArgument="&lt;webctrl parentid='scrEntry' tag='TABLE' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' /&gt;&lt;webctrl type='' tag='TD' class='' aaname='Invoice Amount ($) *' matching:class='fuzzy' fuzzylevel:class='0.0' fuzzylevel:aaname='0.0' check:innerText='Invoice Amount ($) *' /&gt;" Guid="c3a9fea9-fbc6-476f-b6b4-553a057ec6b5" SearchSteps="FuzzySelector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+              <uix:NTypeInto.VerifyOptions>
+                <uix:VerifyExecutionTypeIntoOptions Mode="Appears">
+                  <uix:VerifyExecutionTypeIntoOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionTypeIntoOptions.Retry>
+                  <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                </uix:VerifyExecutionTypeIntoOptions>
+              </uix:NTypeInto.VerifyOptions>
+            </uix:NTypeInto>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Save'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="488,195.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_2" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="f6f2bed4-e7b8-4cf9-8f52-95c31369c4d7" Version="V5">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="" ContentHash="q2u5azVj1Ey3UwzxpmE5YA" DesignTimeRectangle="629, 655, 89, 33" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='btnSave' tag='BUTTON' /&gt;" Guid="2b9e1b82-7e65-4318-b2da-5e41d5d20dc8" InformativeScreenshot="d61262cbf0c4322051752eb0e6c08768.jpg" Reference="DPrYiDWlO0-AVBi_eyU4mQ/zuZqMIN_AUSNbEKt-l--Ig" ScopeSelectorArgument="&lt;html app='chrome.exe' title='CLAIMS ENTRY SYSTEM v2.3' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NGetText DisplayName="Get Text 'DIV entryStatus'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="488,143.33333333333334" sap2010:WorkflowViewState.IdRef="NGetText_1" ScopeIdentifier="f6f2bed4-e7b8-4cf9-8f52-95c31369c4d7" TextString="[strStatus]" Version="V5">
+              <uix:NGetText.Target>
+                <uix:TargetAnchorable BrowserURL="" ContentHash="4fK5Ikiwo0296pA-9qizOg" DesignTimeRectangle="629, 703, 924, 42" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='entryStatus' tag='DIV' /&gt;" Guid="55099fbf-866b-498e-af23-7ff7e8f2391d" InformativeScreenshot="7f5f1b37cadc4081c235efd2d53023de.jpg" Reference="DPrYiDWlO0-AVBi_eyU4mQ/nOiyjyjWSUKIpvZBIbZ8gw" ScopeSelectorArgument="&lt;html app='chrome.exe' title='CLAIMS ENTRY SYSTEM v2.3' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+              </uix:NGetText.Target>
+            </uix:NGetText>
+            <If Condition="[strStatus.Contains(&quot;SAVED&quot;)]" sap:VirtualizedContainerService.HintSize="488,963.3333333333334" sap2010:WorkflowViewState.IdRef="If_1">
+              <If.Then>
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="486,227.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="452,167.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Claim entered: &quot; + in_TransactionItem.SpecificContent(&quot;ClaimNumber&quot;).ToString]" />
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="486,572.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <If Condition="[strStatus.StartsWith(&quot;ERR-&quot;)]" sap:VirtualizedContainerService.HintSize="452,512.6666666666666" sap2010:WorkflowViewState.IdRef="If_2">
+                    <If.Then>
+                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,174.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Throw Exception="[New BusinessRuleException(strStatus)]" sap:VirtualizedContainerService.HintSize="416,114.66666666666667" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,174.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Throw Exception="[New System.Exception(&quot;Legacy app error: &quot; + strStatus)]" sap:VirtualizedContainerService.HintSize="416,114.66666666666667" sap2010:WorkflowViewState.IdRef="Throw_2" />
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                </Sequence>
+              </If.Else>
+            </If>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.OCREngine>
+        <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))">
+          <ActivityFunc.Argument>
+            <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+          </ActivityFunc.Argument>
+        </ActivityFunc>
+      </uix:NApplicationCard.OCREngine>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-11, -11, 2182, 1300" BrowserType="Chrome" ContentHash="NAKS9h9rqkaPZts6bcqxAw" IconBase64="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" InformativeScreenshot="1c03a0b3cd079bfaeeb9d9bc37e5ed00.jpg" Reference="DPrYiDWlO0-AVBi_eyU4mQ/lsWtgPdq_0yskmr3M1GRUQ" Selector="&lt;html app='chrome.exe' title='CLAIMS ENTRY SYSTEM v2.3' /&gt;" Url="file:///C:/Users/rcdha/source/repos/claim-intake-bot/mock-legacy-app/claims.html" Version="V3" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
   </Sequence>
 </Activity>

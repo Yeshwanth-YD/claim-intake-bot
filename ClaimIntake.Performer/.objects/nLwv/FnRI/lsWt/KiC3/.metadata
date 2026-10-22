@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Injury Description ",
+  "Type": "Element",
+  "TaxonomyType": "Input",
+  "Id": "KiC3krZ9WU-LqWt7FMMXXQ",
+  "Reference": "DPrYiDWlO0-AVBi_eyU4mQ/KiC3krZ9WU-LqWt7FMMXXQ",
+  "ParentRef": "DPrYiDWlO0-AVBi_eyU4mQ/lsWtgPdq_0yskmr3M1GRUQ",
+  "Created": "2026-10-22T11:27:29.651346Z",
+  "Updated": "2026-10-22T11:27:29.651346Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.5.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.9.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}
