@@ -147,17 +147,14 @@
               <uix:NTypeInto.Target>
                 <uix:TargetAnchorable BrowserURL="" DesignTimeRectangle="834, 236, 402, 30" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl parentid='scrEntry' tag='TABLE' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' /&gt;&lt;webctrl id='f1' type='text' tag='INPUT' class='' aaname='' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="5987bf7d-c64d-4b1f-9669-0ca3148a1d94" InformativeScreenshot="0a3813dd09b5517fa174012a6c2d04f7.jpg" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='CLAIMS ENTRY SYSTEM v2.3' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
                   <uix:TargetAnchorable.Anchors>
-                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
                       <uix:Target DesignTimeRectangle="632, 231, 190, 39" ElementType="Text" FuzzySelectorArgument="&lt;webctrl parentid='scrEntry' tag='TABLE' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' /&gt;&lt;webctrl type='' tag='TD' class='' aaname='Claim Number *' matching:class='fuzzy' fuzzylevel:class='0.0' fuzzylevel:aaname='0.0' check:innerText='Claim Number *' /&gt;" Guid="a0243554-a4a1-4208-97a6-5df0725b439a" SearchSteps="FuzzySelector" />
                     </scg:List>
                   </uix:TargetAnchorable.Anchors>
                 </uix:TargetAnchorable>
               </uix:NTypeInto.Target>
               <uix:NTypeInto.VerifyOptions>
-                <uix:VerifyExecutionTypeIntoOptions Mode="Appears">
-                  <uix:VerifyExecutionTypeIntoOptions.Retry>
-                    <InArgument x:TypeArguments="x:Boolean" />
-                  </uix:VerifyExecutionTypeIntoOptions.Retry>
+                <uix:VerifyExecutionTypeIntoOptions Mode="Appears" Retry="True">
                   <uix:VerifyExecutionTypeIntoOptions.Timeout>
                     <InArgument x:TypeArguments="x:Double" />
                   </uix:VerifyExecutionTypeIntoOptions.Timeout>
@@ -175,10 +172,7 @@
                 </uix:TargetAnchorable>
               </uix:NTypeInto.Target>
               <uix:NTypeInto.VerifyOptions>
-                <uix:VerifyExecutionTypeIntoOptions Mode="Appears">
-                  <uix:VerifyExecutionTypeIntoOptions.Retry>
-                    <InArgument x:TypeArguments="x:Boolean" />
-                  </uix:VerifyExecutionTypeIntoOptions.Retry>
+                <uix:VerifyExecutionTypeIntoOptions Mode="Appears" Retry="True">
                   <uix:VerifyExecutionTypeIntoOptions.Timeout>
                     <InArgument x:TypeArguments="x:Double" />
                   </uix:VerifyExecutionTypeIntoOptions.Timeout>
@@ -189,17 +183,14 @@
               <uix:NTypeInto.Target>
                 <uix:TargetAnchorable BrowserURL="" ContentHash="1CKMDyrfLUepQP1SUkFLog" DesignTimeRectangle="834, 320, 402, 30" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl parentid='scrEntry' tag='TABLE' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' /&gt;&lt;webctrl id='f3' type='text' tag='INPUT' class='' placeholder='DD/MM/YYYY' aaname='' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="97b72061-0cbe-486b-8f80-60e144922b3d" InformativeScreenshot="9f8c2d49f6c3595dcd42d5064538e413.jpg" IsResponsive="True" Reference="DPrYiDWlO0-AVBi_eyU4mQ/nClk3uXNW0Wmdw6_Y2TWvQ" ScopeSelectorArgument="&lt;html app='chrome.exe' title='CLAIMS ENTRY SYSTEM v2.3' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
                   <uix:TargetAnchorable.Anchors>
-                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
                       <uix:Target DesignTimeRectangle="632, 315, 190, 39" ElementType="Text" FuzzySelectorArgument="&lt;webctrl parentid='scrEntry' tag='TABLE' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' /&gt;&lt;webctrl type='' tag='TD' class='' aaname='Date of Birth *' matching:class='fuzzy' fuzzylevel:class='0.0' fuzzylevel:aaname='0.0' check:innerText='Date of Birth *' /&gt;" Guid="1f26202e-20e4-4170-8511-f81a6474822e" SearchSteps="FuzzySelector" />
                     </scg:List>
                   </uix:TargetAnchorable.Anchors>
                 </uix:TargetAnchorable>
               </uix:NTypeInto.Target>
               <uix:NTypeInto.VerifyOptions>
-                <uix:VerifyExecutionTypeIntoOptions Mode="Appears">
-                  <uix:VerifyExecutionTypeIntoOptions.Retry>
-                    <InArgument x:TypeArguments="x:Boolean" />
-                  </uix:VerifyExecutionTypeIntoOptions.Retry>
+                <uix:VerifyExecutionTypeIntoOptions Mode="Appears" Retry="True">
                   <uix:VerifyExecutionTypeIntoOptions.Timeout>
                     <InArgument x:TypeArguments="x:Double" />
                   </uix:VerifyExecutionTypeIntoOptions.Timeout>
@@ -210,17 +201,14 @@
               <uix:NTypeInto.Target>
                 <uix:TargetAnchorable BrowserURL="" ContentHash="St_XRmjwCEG4p2jwbPSJGA" DesignTimeRectangle="834, 362, 402, 30" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl parentid='scrEntry' tag='TABLE' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' /&gt;&lt;webctrl id='f4' type='text' tag='INPUT' class='' placeholder='DD/MM/YYYY' aaname='' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="62df5387-06fb-48de-b703-8d58e0c44485" InformativeScreenshot="37ade6257f89be60527a5be1ea26a2c1.jpg" IsResponsive="True" Reference="DPrYiDWlO0-AVBi_eyU4mQ/iENlLY22HUStdRPD-owskA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='CLAIMS ENTRY SYSTEM v2.3' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
                   <uix:TargetAnchorable.Anchors>
-                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
                       <uix:Target DesignTimeRectangle="632, 357, 190, 39" ElementType="Text" FuzzySelectorArgument="&lt;webctrl parentid='scrEntry' tag='TABLE' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' /&gt;&lt;webctrl type='' tag='TD' class='' aaname='Accident Date *' matching:class='fuzzy' fuzzylevel:class='0.0' fuzzylevel:aaname='0.0' check:innerText='Accident Date *' /&gt;" Guid="79b0ec96-d5a7-463f-a6cf-a36d7bf1ed7e" SearchSteps="FuzzySelector" />
                     </scg:List>
                   </uix:TargetAnchorable.Anchors>
                 </uix:TargetAnchorable>
               </uix:NTypeInto.Target>
               <uix:NTypeInto.VerifyOptions>
-                <uix:VerifyExecutionTypeIntoOptions Mode="Appears">
-                  <uix:VerifyExecutionTypeIntoOptions.Retry>
-                    <InArgument x:TypeArguments="x:Boolean" />
-                  </uix:VerifyExecutionTypeIntoOptions.Retry>
+                <uix:VerifyExecutionTypeIntoOptions Mode="Appears" Retry="True">
                   <uix:VerifyExecutionTypeIntoOptions.Timeout>
                     <InArgument x:TypeArguments="x:Double" />
                   </uix:VerifyExecutionTypeIntoOptions.Timeout>
@@ -231,17 +219,14 @@
               <uix:NTypeInto.Target>
                 <uix:TargetAnchorable BrowserURL="" ContentHash="kka-_ivkikC8r9Ikvb5AJQ" DesignTimeRectangle="834, 404, 402, 30" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl parentid='scrEntry' tag='TABLE' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' /&gt;&lt;webctrl id='f5' type='text' tag='INPUT' class='' aaname='' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="2cdbaf5c-0440-4b4f-8b1c-ba07a93c2a0d" InformativeScreenshot="8899d13a0a4ddaa51ba394a608c82dc7.jpg" IsResponsive="True" Reference="DPrYiDWlO0-AVBi_eyU4mQ/njC4AuDGrkq7zL84YmCF0g" ScopeSelectorArgument="&lt;html app='chrome.exe' title='CLAIMS ENTRY SYSTEM v2.3' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
                   <uix:TargetAnchorable.Anchors>
-                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
                       <uix:Target DesignTimeRectangle="632, 399, 190, 39" ElementType="Text" FuzzySelectorArgument="&lt;webctrl parentid='scrEntry' tag='TABLE' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' /&gt;&lt;webctrl type='' tag='TD' class='' aaname='Accident Location *' matching:class='fuzzy' fuzzylevel:class='0.0' fuzzylevel:aaname='0.0' check:innerText='Accident Location *' /&gt;" Guid="5a44bb74-6527-4c2b-8df0-ef927260cd6a" SearchSteps="FuzzySelector" />
                     </scg:List>
                   </uix:TargetAnchorable.Anchors>
                 </uix:TargetAnchorable>
               </uix:NTypeInto.Target>
               <uix:NTypeInto.VerifyOptions>
-                <uix:VerifyExecutionTypeIntoOptions Mode="Appears">
-                  <uix:VerifyExecutionTypeIntoOptions.Retry>
-                    <InArgument x:TypeArguments="x:Boolean" />
-                  </uix:VerifyExecutionTypeIntoOptions.Retry>
+                <uix:VerifyExecutionTypeIntoOptions Mode="Appears" Retry="True">
                   <uix:VerifyExecutionTypeIntoOptions.Timeout>
                     <InArgument x:TypeArguments="x:Double" />
                   </uix:VerifyExecutionTypeIntoOptions.Timeout>
@@ -252,17 +237,14 @@
               <uix:NTypeInto.Target>
                 <uix:TargetAnchorable BrowserURL="" ContentHash="p4M82X0q9k2VEEEztKDZSg" DesignTimeRectangle="834, 446, 402, 30" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl parentid='scrEntry' tag='TABLE' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' /&gt;&lt;webctrl id='f6' type='text' tag='INPUT' class='' aaname='' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="a6d7d33d-8647-46cc-8275-2263fcb799fa" InformativeScreenshot="390981ed98b7466a575820ad4aeb03a3.jpg" IsResponsive="True" Reference="DPrYiDWlO0-AVBi_eyU4mQ/mfv9srIybkuBiyc0ptgq4g" ScopeSelectorArgument="&lt;html app='chrome.exe' title='CLAIMS ENTRY SYSTEM v2.3' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
                   <uix:TargetAnchorable.Anchors>
-                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
                       <uix:Target DesignTimeRectangle="632, 441, 190, 39" ElementType="Text" FuzzySelectorArgument="&lt;webctrl parentid='scrEntry' tag='TABLE' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' /&gt;&lt;webctrl type='' tag='TD' class='' aaname='Vehicle Registration *' matching:class='fuzzy' fuzzylevel:class='0.0' fuzzylevel:aaname='0.0' check:innerText='Vehicle Registration *' /&gt;" Guid="a96905fe-93bb-44c6-9ef3-2f1893e2f02a" SearchSteps="FuzzySelector" />
                     </scg:List>
                   </uix:TargetAnchorable.Anchors>
                 </uix:TargetAnchorable>
               </uix:NTypeInto.Target>
               <uix:NTypeInto.VerifyOptions>
-                <uix:VerifyExecutionTypeIntoOptions Mode="Appears">
-                  <uix:VerifyExecutionTypeIntoOptions.Retry>
-                    <InArgument x:TypeArguments="x:Boolean" />
-                  </uix:VerifyExecutionTypeIntoOptions.Retry>
+                <uix:VerifyExecutionTypeIntoOptions Mode="Appears" Retry="True">
                   <uix:VerifyExecutionTypeIntoOptions.Timeout>
                     <InArgument x:TypeArguments="x:Double" />
                   </uix:VerifyExecutionTypeIntoOptions.Timeout>
@@ -273,17 +255,14 @@
               <uix:NTypeInto.Target>
                 <uix:TargetAnchorable BrowserURL="" ContentHash="tivlf3u5jUm_er7Lz9y6UQ" DesignTimeRectangle="834, 488, 402, 72" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl parentid='scrEntry' tag='TABLE' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' /&gt;&lt;webctrl id='f7' type='' tag='TEXTAREA' class='' aaname='' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="8b58c445-c321-4b0b-8b04-fe0f816bd8db" InformativeScreenshot="83f615471cb4e94da6d97f3114c8fc44.jpg" IsResponsive="True" Reference="DPrYiDWlO0-AVBi_eyU4mQ/KiC3krZ9WU-LqWt7FMMXXQ" ScopeSelectorArgument="&lt;html app='chrome.exe' title='CLAIMS ENTRY SYSTEM v2.3' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
                   <uix:TargetAnchorable.Anchors>
-                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
                       <uix:Target DesignTimeRectangle="632, 483, 190, 85" ElementType="Text" FuzzySelectorArgument="&lt;webctrl parentid='scrEntry' tag='TABLE' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' /&gt;&lt;webctrl type='' tag='TD' class='' aaname='Injury Description *' matching:class='fuzzy' fuzzylevel:class='0.0' fuzzylevel:aaname='0.0' check:innerText='Injury Description *' /&gt;" Guid="bdf88b03-bd1f-4d3a-945f-b2f4a8893891" SearchSteps="FuzzySelector" />
                     </scg:List>
                   </uix:TargetAnchorable.Anchors>
                 </uix:TargetAnchorable>
               </uix:NTypeInto.Target>
               <uix:NTypeInto.VerifyOptions>
-                <uix:VerifyExecutionTypeIntoOptions Mode="Appears">
-                  <uix:VerifyExecutionTypeIntoOptions.Retry>
-                    <InArgument x:TypeArguments="x:Boolean" />
-                  </uix:VerifyExecutionTypeIntoOptions.Retry>
+                <uix:VerifyExecutionTypeIntoOptions Mode="Appears" Retry="True">
                   <uix:VerifyExecutionTypeIntoOptions.Timeout>
                     <InArgument x:TypeArguments="x:Double" />
                   </uix:VerifyExecutionTypeIntoOptions.Timeout>
@@ -294,17 +273,14 @@
               <uix:NTypeInto.Target>
                 <uix:TargetAnchorable BrowserURL="" ContentHash="DOatKbsYYUOQAE5lfogB8g" DesignTimeRectangle="834, 576, 402, 30" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl parentid='scrEntry' tag='TABLE' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' /&gt;&lt;webctrl id='f8' type='text' tag='INPUT' class='' aaname='' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="095952eb-82ae-4b06-afaa-5481e7788dda" InformativeScreenshot="60afd9a3187a5f58b79e00c7b7a9283e.jpg" IsResponsive="True" Reference="DPrYiDWlO0-AVBi_eyU4mQ/Nzp1Dl3L1Um0k8tcx6OYeg" ScopeSelectorArgument="&lt;html app='chrome.exe' title='CLAIMS ENTRY SYSTEM v2.3' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
                   <uix:TargetAnchorable.Anchors>
-                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
                       <uix:Target DesignTimeRectangle="632, 571, 190, 39" ElementType="Text" FuzzySelectorArgument="&lt;webctrl parentid='scrEntry' tag='TABLE' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' /&gt;&lt;webctrl type='' tag='TD' class='' aaname='Treatment Provider *' matching:class='fuzzy' fuzzylevel:class='0.0' fuzzylevel:aaname='0.0' check:innerText='Treatment Provider *' /&gt;" Guid="228a8188-c93e-41c7-8500-d80fcdd10fe9" SearchSteps="FuzzySelector" />
                     </scg:List>
                   </uix:TargetAnchorable.Anchors>
                 </uix:TargetAnchorable>
               </uix:NTypeInto.Target>
               <uix:NTypeInto.VerifyOptions>
-                <uix:VerifyExecutionTypeIntoOptions Mode="Appears">
-                  <uix:VerifyExecutionTypeIntoOptions.Retry>
-                    <InArgument x:TypeArguments="x:Boolean" />
-                  </uix:VerifyExecutionTypeIntoOptions.Retry>
+                <uix:VerifyExecutionTypeIntoOptions Mode="Appears" Retry="True">
                   <uix:VerifyExecutionTypeIntoOptions.Timeout>
                     <InArgument x:TypeArguments="x:Double" />
                   </uix:VerifyExecutionTypeIntoOptions.Timeout>
@@ -315,7 +291,7 @@
               <uix:NTypeInto.Target>
                 <uix:TargetAnchorable BrowserURL="" ContentHash="U3JYLoHiQEO0mRFlSTDdfQ" DesignTimeRectangle="834, 618, 402, 30" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl parentid='scrEntry' tag='TABLE' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' /&gt;&lt;webctrl id='f9' type='text' tag='INPUT' class='' aaname='' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="79e48b7e-86be-4b47-97d1-8f22ecd15841" InformativeScreenshot="db87b5d71542fee20157efe449755c14.jpg" IsResponsive="True" Reference="DPrYiDWlO0-AVBi_eyU4mQ/TxWiEsnKnk-dh07xNc2vIQ" ScopeSelectorArgument="&lt;html app='chrome.exe' title='CLAIMS ENTRY SYSTEM v2.3' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
                   <uix:TargetAnchorable.Anchors>
-                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
                       <uix:Target DesignTimeRectangle="632, 613, 190, 39" ElementType="Text" FuzzySelectorArgument="&lt;webctrl parentid='scrEntry' tag='TABLE' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' /&gt;&lt;webctrl type='' tag='TD' class='' aaname='Invoice Amount ($) *' matching:class='fuzzy' fuzzylevel:class='0.0' fuzzylevel:aaname='0.0' check:innerText='Invoice Amount ($) *' /&gt;" Guid="c3a9fea9-fbc6-476f-b6b4-553a057ec6b5" SearchSteps="FuzzySelector" />
                     </scg:List>
                   </uix:TargetAnchorable.Anchors>
