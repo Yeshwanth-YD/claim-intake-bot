@@ -4,7 +4,7 @@ A UiPath automation that reads insurance claim forms (PDF) with **Document Under
 
 > All data in this repo is synthetic. The insurer, people and claims are invented for testing.
 
-**Demo video (2 min):** _link coming_
+**Demo video (1 min 38 sec):** _link coming_
 
 ---
 
@@ -42,21 +42,28 @@ flowchart LR
 ## Results
 
 <!-- RESULTS -->
+From the recorded end-to-end run (8 claim PDFs):
+
 | Measure | Result |
 |---|---|
-| Extraction accuracy (clean form) | 9 of 9 fields correct |
-| Claims entered without manual keying | _pending full run_ |
-| Average time per claim (performer) | about 13 seconds |
-| Duplicate claim caught | at the queue, before reaching the app |
-| Missing-data claim | routed to a person with the reason |
-| Simulated outage | recovered automatically, claim retried and saved |
+| Claims entered into the legacy app with no manual keying | 6 of 6 valid claims |
+| Duplicate claim | rejected at the queue, never reached the app |
+| Claim with a missing accident date | routed to a person, with the reason logged |
+| Simulated outage mid-run | system exception, screenshot, app restarted, claim retried and saved |
+| Dispatcher time (extract + validate + queue) | 8 PDFs in 2 min 35 sec, about 19 sec each |
+| Performer time (including the outage and restart) | 6 claims in 2 min |
+| Extraction on clean forms | all fields checked matched the ground truth |
+| Extraction on the skewed, noisy scan | 2 character-level errors from speckle noise (`Sofià` for `Sofia`, `Bayside Physio : Clinic`) |
+
+The noisy-scan errors are well-formed values, so format rules can't catch them. That is the case for routing scanned or low-quality documents to a person, sample-based QA, or a trained extractor with real confidence scores.
 
 ## Design decisions
 
 - **Two layers of duplicate protection.** The queue's unique reference stops duplicates before any robot time is spent; the legacy app's own check is the backstop.
 - **Business vs system exceptions.** Bad data goes to a person and is never retried; technical failures are retried after a clean restart. `MaxRetryNumber` stays 0 because retries are owned by the queue.
 - **No confidence score from generative extraction.** Generative extractors don't return calibrated confidence, so validation uses business rules instead. Asking the model twice was considered and rejected: it doubles cost and latency for little gain on a fixed-layout form. For a stable, high-volume form in production, a trained extractor with real confidence scores plus sample-based QA would be the next step.
-- **Found by deliberately breaking things.** Interfering with the app mid-run exposed a typing failure being misread as bad data (fixed with *Verify execution* on every Type Into) and a browser restart race condition (fixed with a recovery delay).
+- **Found by deliberately breaking things.** Interfering with the app mid-run exposed a browser restart race condition (fixed with a recovery delay) and a typing failure being misread as bad data (next fix: *Verify execution* on every Type Into, so a failed keystroke becomes a retried system exception rather than a business exception).
+- **Claim number on every log line.** Each transaction's logs carry its claim number, so support can trace any failure straight to the claim.
 - **No personal data in logs.** Logs carry the claim number only; names, dates of birth and injuries never appear.
 - **Legacy selectors in one place.** The mock app's cryptic field IDs (`f1`–`f9`) are mapped once, so a UI change is a single fix.
 
