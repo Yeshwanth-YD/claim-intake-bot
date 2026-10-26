@@ -4,7 +4,13 @@ A UiPath automation that reads insurance claim forms (PDF) with **Document Under
 
 > All data in this repo is synthetic. The insurer, people and claims are invented for testing.
 
-**Demo video (1 min 38 sec):** _link coming_
+**Demo video (1 min 38 sec):
+
+https://github.com/user-attachments/assets/6d83595c-7c33-4fe2-8ad7-0b38f161f1c3
+
+
+
+
 
 ---
 
