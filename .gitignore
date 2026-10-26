@@ -14,3 +14,6 @@ reports/
 # OS
 Thumbs.db
 .DS_Store
+
+# Claims routed for human review (runtime output)
+needs-review/*.pdf

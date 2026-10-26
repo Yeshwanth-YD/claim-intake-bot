@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:p="http://schemas.uipath.com/workflow/activities/intelligentocr" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uisad="clr-namespace:UiPath.IntelligentOCR.StudioWeb.Activities.DataExtraction;assembly=UiPath.IntelligentOCR.StudioWeb.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -38,6 +38,20 @@
       <x:String>UiPath.Shared.Activities.Business</x:String>
       <x:String>UiPath.DataTableUtilities</x:String>
       <x:String>System.Activities.Runtime.Collections</x:String>
+      <x:String>UiPath.IntelligentOCR.StudioWeb.Activities.SWEntities.CustomGptDocumentTypeF0146Fc3Fccc4B49B74D95D4B965E17E.Bundle</x:String>
+      <x:String>UiPath.IntelligentOCR.StudioWeb.Activities.DataExtraction</x:String>
+      <x:String>UiPath.IntelligentOCR.StudioWeb.Activities.SWEntities.CustomGptDocumentType17394306637E4972Bd01Af20E622F16C.Bundle</x:String>
+      <x:String>UiPath.IntelligentOCR.StudioWeb.Activities.SWEntities.CustomGptDocumentTypeBb6B563F353C46AdA987Ed7A98Cb11C8.Bundle</x:String>
+      <x:String>UiPath.IntelligentOCR.StudioWeb.Activities.DocumentClassification</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.DataExtraction</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.Results</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.Dom</x:String>
+      <x:String>UiPath.IntelligentOCR.StudioWeb.Activities</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts</x:String>
+      <x:String>UiPath.IntelligentOCR.StudioWeb.Activities.Bindings</x:String>
+      <x:String>UiPath.IntelligentOCR.StudioWeb.Activities.Telemetry</x:String>
+      <x:String>UiPath.Platform</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -100,24 +114,32 @@
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
       <AssemblyReference>System.Linq.Parallel</AssemblyReference>
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>CustomGptDocumentTyp.0scgx2hzOvN1Xsuck2jbSfL2</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR.StudioWeb.Activities</AssemblyReference>
+      <AssemblyReference>CustomGptDocumentTyp.A9j39WozFF1EJ4q8GU1Gu</AssemblyReference>
+      <AssemblyReference>CustomGptDocumentTyp.ffJ782kQK6G19b24C1Tfpyx3</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+      <AssemblyReference>UiPath.DocumentProcessing.Contracts</AssemblyReference>
+      <AssemblyReference>UiPath.CodedWorkflows</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="800.6666666666666,1218" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="800.6666666666666,2769.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Name="Filepath_groundtruth">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:String">C:\Users\rcdha\source\repos\claim-intake-bot\sample-claims\ground_truth.csv</Literal>
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="x:String" Default="C:\Users\rcdha\source\repos\claim-intake-bot\sample-claims\ground_truth.csv" Name="Filepath_groundtruth" />
       <Variable x:TypeArguments="x:String" Name="strRuntag" />
-      <Variable x:TypeArguments="sd:DataTable" Name="dtClaims" />
+      <Variable x:TypeArguments="uisad:DictionaryData" Name="dtClaims" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign sap:VirtualizedContainerService.HintSize="488,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign sap:VirtualizedContainerService.HintSize="524,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[strRuntag]</OutArgument>
       </Assign.To>
@@ -125,64 +147,226 @@
         <InArgument x:TypeArguments="x:String">[Now.ToString("ddHHmm")]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:ReadCsvFile PathResource="{x:Null}" DataTable="[dtClaims]" Delimitator="Comma" DelimitatorForViewModel="Comma" DisplayName="Read CSV" FilePath="../sample-claims/ground_truth.csv" sap:VirtualizedContainerService.HintSize="488,172" sap2010:WorkflowViewState.IdRef="ReadCsvFile_2" />
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtClaims]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="488,846.6666666666666" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
-      <ui:ForEachRow.Body>
-        <ActivityAction x:TypeArguments="sd:DataRow">
-          <ActivityAction.Argument>
-            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
-          </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="486,672" sap2010:WorkflowViewState.IdRef="Sequence_3">
+    <ui:CommentOut DisplayName="initial test with csv" sap:VirtualizedContainerService.HintSize="524,57.333333333333336" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="650,25.333333333333332" sap2010:WorkflowViewState.IdRef="Sequence_7">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:ReadCsvFile PathResource="{x:Null}" DataTable="[dtClaims]" Delimitator="Comma" DelimitatorForViewModel="Comma" DisplayName="Read CSV" FilePath="../sample-claims/ground_truth.csv" sap:VirtualizedContainerService.HintSize="616,57.333333333333336" sap2010:WorkflowViewState.IdRef="ReadCsvFile_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="452,612" sap2010:WorkflowViewState.IdRef="TryCatch_1">
-              <TryCatch.Try>
-                <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="450,227.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          </ui:ReadCsvFile>
+          <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtClaims]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="616,846.6666666666666" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+            <ui:ForEachRow.Body>
+              <ActivityAction x:TypeArguments="sd:DataRow">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="486,672" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:AddQueueItem TimeoutMS="{x:Null}" DisplayName="Add Queue Item" FolderPath="Shared" sap:VirtualizedContainerService.HintSize="416,167.33333333333334" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" ItemInformationCollection="[CurrentRow.Table.Columns.Cast(Of DataColumn).ToDictionary(Function(c) c.ColumnName, Function(c) CObj(CurrentRow(c).ToString))]" Priority="Normal" QueueType="ClaimIntake" Reference="[CurrentRow(&quot;ClaimNumber&quot;).ToString + &quot;-&quot; + strRunTag]">
-                    <ui:AddQueueItem.ItemInformation>
-                      <scg:Dictionary x:TypeArguments="x:String, InArgument" />
-                    </ui:AddQueueItem.ItemInformation>
-                  </ui:AddQueueItem>
+                  <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="452,612" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+                    <TryCatch.Try>
+                      <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="450,227.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:AddQueueItem TimeoutMS="{x:Null}" DisplayName="Add Queue Item" FolderPath="Shared" sap:VirtualizedContainerService.HintSize="416,167.33333333333334" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" ItemInformationCollection="[CurrentRow.Table.Columns.Cast(Of DataColumn).ToDictionary(Function(c) c.ColumnName, Function(c) CObj(CurrentRow(c).ToString))]" Priority="Normal" QueueType="ClaimIntake" Reference="[CurrentRow(&quot;ClaimNumber&quot;).ToString + &quot;-&quot; + strRunTag]">
+                          <ui:AddQueueItem.ItemInformation>
+                            <scg:Dictionary x:TypeArguments="x:String, InArgument" />
+                          </ui:AddQueueItem.ItemInformation>
+                        </ui:AddQueueItem>
+                      </Sequence>
+                    </TryCatch.Try>
+                    <TryCatch.Catches>
+                      <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                        <ActivityAction x:TypeArguments="s:Exception">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                          </ActivityAction.Argument>
+                          <Sequence DisplayName="Catch" sap:VirtualizedContainerService.HintSize="450,227.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,167.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Warn" Message="[&quot;Skipped claim &quot; + CurrentRow(&quot;ClaimNumber&quot;).ToString + &quot;: &quot; + exception.Message]" />
+                          </Sequence>
+                        </ActivityAction>
+                      </Catch>
+                    </TryCatch.Catches>
+                    <TryCatch.Finally>
+                      <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="450,25.333333333333332" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </Sequence>
+                    </TryCatch.Finally>
+                  </TryCatch>
                 </Sequence>
-              </TryCatch.Try>
-              <TryCatch.Catches>
-                <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_1">
-                  <ActivityAction x:TypeArguments="s:Exception">
-                    <ActivityAction.Argument>
-                      <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
-                    </ActivityAction.Argument>
-                    <Sequence DisplayName="Catch" sap:VirtualizedContainerService.HintSize="450,227.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_6">
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,167.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Warn" Message="[&quot;Skipped claim &quot; + CurrentRow(&quot;ClaimNumber&quot;).ToString + &quot;: &quot; + exception.Message]" />
-                    </Sequence>
-                  </ActivityAction>
-                </Catch>
-              </TryCatch.Catches>
-              <TryCatch.Finally>
-                <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="450,25.333333333333332" sap2010:WorkflowViewState.IdRef="Sequence_5">
+              </ActivityAction>
+            </ui:ForEachRow.Body>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:ForEachRow>
+        </Sequence>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each pdfPath" sap:VirtualizedContainerService.HintSize="524,2512.6666666666665" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[System.IO.Directory.GetFiles(&quot;..\sample-claims&quot;, &quot;*.pdf&quot;)]">
+      <ui:ForEach.Body>
+        <ActivityAction x:TypeArguments="x:String">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:String" Name="pdfPath" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="522,2390" sap2010:WorkflowViewState.IdRef="Sequence_8">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="uisad:IDocumentData(uisad:DictionaryData)" Name="docData" />
+              <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="dictClaim" />
+              <Variable x:TypeArguments="x:String" Name="strIssues" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <p:ExtractDocumentDataWithDocumentData x:TypeArguments="uisad:DictionaryData" DocumentBounds="{x:Null}" DocumentObjectModel="{x:Null}" DocumentPath="{x:Null}" DocumentText="{x:Null}" ExtractorDocumentType="{x:Null}" ExtractorResult="{x:Null}" ModernDocumentTypeId="{x:Null}" PersistenceId="{x:Null}" PredictionId="{x:Null}" ProjectVersionNumber="{x:Null}" RuntimeAssetPath="{x:Null}" RuntimeTenantUrl="{x:Null}" ActivityMajorVersion="2" ApplyAutoValidation="False" DisplayName="Extract Document Data" DocType="generative_extractor" ExtractionResults="[docData]" ExtractorName="Long Document Simple Layout Extractor" FileInput="[LocalResource.FromPath(pdfPath)]" GenerateData="False" sap:VirtualizedContainerService.HintSize="488,282.6666666666667" sap2010:WorkflowViewState.IdRef="ExtractDocumentDataWithDocumentData`1_1" ProjectId="00000000-0000-0000-0000-000000000001" ProjectName="Generative Predefined" TimeoutInSeconds="3600">
+              <p:ExtractDocumentDataWithDocumentData.AutoValidationConfidenceThreshold>
+                <InArgument x:TypeArguments="s:Nullable(x:Int32)">
+                  <Literal x:TypeArguments="s:Nullable(x:Int32)" Value="0" />
+                </InArgument>
+              </p:ExtractDocumentDataWithDocumentData.AutoValidationConfidenceThreshold>
+              <p:ExtractDocumentDataWithDocumentData.GptPromptWithVariables>
+                <InArgument x:TypeArguments="x:String" x:Key="ClaimNumber">The claim number, format CLM-2026-0000</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="ClaimantName">The claimant’s full name</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="DateOfBirth">The claimant’s date of birth, as DD/MM/YYYY</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="AccidentDate">The date of the accident, as DD/MM/YYYY. Leave empty if not filled in</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="AccidentLocation">The accident location</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="VehicleRego">The vehicle registration</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="InjuryDescription">The description of the injury</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="TreatmentProvider">The name of the treating provider</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="InvoiceAmount">The invoice amount as a number only, without $ or commas</InArgument>
+              </p:ExtractDocumentDataWithDocumentData.GptPromptWithVariables>
+              <p:ExtractDocumentDataWithDocumentData.ProjectTag>
+                <InArgument x:TypeArguments="x:String">
+                  <Literal x:TypeArguments="x:String" Value="" />
+                </InArgument>
+              </p:ExtractDocumentDataWithDocumentData.ProjectTag>
+            </p:ExtractDocumentDataWithDocumentData>
+            <Assign sap:VirtualizedContainerService.HintSize="488,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_3">
+              <Assign.To>
+                <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[dictClaim]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[{"ClaimNumber","ClaimantName","DateOfBirth","AccidentDate","AccidentLocation","VehicleRego","InjuryDescription","TreatmentProvider","InvoiceAmount"}.ToDictionary(Function(f) f, Function(f) CObj(If(docData.Data.GetFieldValue(f) Is Nothing OrElse docData.Data.GetFieldValue(f).Value Is Nothing, "", docData.Data.GetFieldValue(f).Value.ToString.Trim)))]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap:VirtualizedContainerService.HintSize="488,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_4">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Object">[dictClaim("SourceFile")]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Object">[System.IO.Path.GetFileName(pdfPath)]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:InvokeCode ContinueOnError="{x:Null}" Code="Dim claim = CType(in_Claim, Dictionary(Of String, Object))&#xA;Dim issues As New List(Of String)&#xA;Dim ci = System.Globalization.CultureInfo.InvariantCulture&#xA;For Each f In {&quot;ClaimNumber&quot;,&quot;ClaimantName&quot;,&quot;DateOfBirth&quot;,&quot;AccidentDate&quot;,&quot;AccidentLocation&quot;,&quot;VehicleRego&quot;,&quot;InjuryDescription&quot;,&quot;TreatmentProvider&quot;,&quot;InvoiceAmount&quot;}&#xA;    If String.IsNullOrWhiteSpace(CStr(claim(f))) Then issues.Add(f &amp; &quot; missing&quot;)&#xA;Next&#xA;Dim claimNo = CStr(claim(&quot;ClaimNumber&quot;))&#xA;If claimNo &lt;&gt; &quot;&quot; AndAlso Not System.Text.RegularExpressions.Regex.IsMatch(claimNo, &quot;^CLM-2026-\d{4}$&quot;) Then issues.Add(&quot;ClaimNumber format&quot;)&#xA;Dim dob, acc As DateTime&#xA;Dim okDob = DateTime.TryParseExact(CStr(claim(&quot;DateOfBirth&quot;)), &quot;dd/MM/yyyy&quot;, ci, System.Globalization.DateTimeStyles.None, dob)&#xA;Dim okAcc = DateTime.TryParseExact(CStr(claim(&quot;AccidentDate&quot;)), &quot;dd/MM/yyyy&quot;, ci, System.Globalization.DateTimeStyles.None, acc)&#xA;If CStr(claim(&quot;DateOfBirth&quot;)) &lt;&gt; &quot;&quot; AndAlso Not okDob Then issues.Add(&quot;DateOfBirth format&quot;)&#xA;If CStr(claim(&quot;AccidentDate&quot;)) &lt;&gt; &quot;&quot; AndAlso Not okAcc Then issues.Add(&quot;AccidentDate format&quot;)&#xA;If okAcc AndAlso acc &gt; DateTime.Today Then issues.Add(&quot;AccidentDate in future&quot;)&#xA;If okDob AndAlso okAcc AndAlso dob &gt;= acc Then issues.Add(&quot;DateOfBirth not before AccidentDate&quot;)&#xA;Dim amt As Decimal&#xA;Dim amtText = CStr(claim(&quot;InvoiceAmount&quot;)).Replace(&quot;$&quot;, &quot;&quot;).Replace(&quot;,&quot;, &quot;&quot;).Trim&#xA;If amtText &lt;&gt; &quot;&quot; AndAlso (Not Decimal.TryParse(amtText, System.Globalization.NumberStyles.Number, ci, amt) OrElse amt &lt;= 0) Then issues.Add(&quot;InvoiceAmount invalid&quot;)&#xA;out_Issues = String.Join(&quot;; &quot;, issues)" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="488,406.6666666666667" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+              <ui:InvokeCode.Arguments>
+                <OutArgument x:TypeArguments="x:String" x:Key="out_Issues">[strIssues]</OutArgument>
+                <InArgument x:TypeArguments="x:Object" x:Key="in_Claim">[dictClaim]</InArgument>
+              </ui:InvokeCode.Arguments>
+            </ui:InvokeCode>
+            <If Condition="[String.IsNullOrEmpty(strIssues)]" sap:VirtualizedContainerService.HintSize="488,1287.3333333333333" sap2010:WorkflowViewState.IdRef="If_1">
+              <If.Then>
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="486,672" sap2010:WorkflowViewState.IdRef="Sequence_10">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
+                  <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="452,612" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+                    <TryCatch.Try>
+                      <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="450,227.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:AddQueueItem TimeoutMS="{x:Null}" DisplayName="Add Queue Item" FolderPath="Shared" sap:VirtualizedContainerService.HintSize="416,167.33333333333334" sap2010:WorkflowViewState.IdRef="AddQueueItem_2" ItemInformationCollection="[dictClaim]" Priority="Normal" QueueType="ClaimIntake" Reference="[CStr(dictClaim(&quot;ClaimNumber&quot;)) + &quot;-&quot; + strRunTag]">
+                          <ui:AddQueueItem.ItemInformation>
+                            <scg:Dictionary x:TypeArguments="x:String, InArgument" />
+                          </ui:AddQueueItem.ItemInformation>
+                        </ui:AddQueueItem>
+                      </Sequence>
+                    </TryCatch.Try>
+                    <TryCatch.Catches>
+                      <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_3">
+                        <ActivityAction x:TypeArguments="s:Exception">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                          </ActivityAction.Argument>
+                          <Sequence DisplayName="Catch" sap:VirtualizedContainerService.HintSize="450,227.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,167.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Warn" Message="[&quot;Skipped claim &quot; + CStr(dictClaim(&quot;ClaimNumber&quot;)) + &quot;: &quot; + exception.Message]" />
+                          </Sequence>
+                        </ActivityAction>
+                      </Catch>
+                    </TryCatch.Catches>
+                    <TryCatch.Finally>
+                      <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="450,25.333333333333332" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </Sequence>
+                    </TryCatch.Finally>
+                  </TryCatch>
                 </Sequence>
-              </TryCatch.Finally>
-            </TryCatch>
+              </If.Then>
+              <If.Else>
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="486,452" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="452,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Warn" Message="[&quot;Needs review: &quot; + CStr(dictClaim(&quot;SourceFile&quot;)) + &quot; - &quot; + strIssues]" />
+                  <ui:CopyFile ContinueOnError="{x:Null}" DestinationResource="{x:Null}" PathResource="{x:Null}" Destination="[&quot;..\needs-review\&quot; + CStr(dictClaim(&quot;SourceFile&quot;))]" DisplayName="Copy File" sap:VirtualizedContainerService.HintSize="452,215.33333333333334" sap2010:WorkflowViewState.IdRef="CopyFile_1" Path="[pdfPath]" />
+                </Sequence>
+              </If.Else>
+            </If>
           </Sequence>
         </ActivityAction>
-      </ui:ForEachRow.Body>
-    </ui:ForEachRow>
+      </ui:ForEach.Body>
+    </ui:ForEach>
   </Sequence>
 </Activity>
